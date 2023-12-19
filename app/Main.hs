@@ -23,4 +23,24 @@ arrangerOptions =
     execParser $ info appOptionsParser mempty
 
 appOptionsParser :: Parser AppOptions
-appOptionsParser = undefined
+appOptionsParser =
+    AppOptions
+        <$> withAnswersParser
+        <*> maxDigitsParser
+        <*> separationParser
+        <*> probsInGroupParser
+        <*> outputParser
+        <*> inputFileParser
+    where
+        withAnswersParser :: Parser Bool
+        withAnswersParser = pure False
+        maxDigitsParser :: Parser Int
+        maxDigitsParser = pure 4
+        separationParser :: Parser Int
+        separationParser = pure 4
+        probsInGroupParser :: Parser Int
+        probsInGroupParser = pure 5
+        outputParser :: Parser AppOutput
+        outputParser = pure StdOut
+        inputFileParser :: Parser FilePath
+        inputFileParser = pure "input.txt"
