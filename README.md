@@ -1,4 +1,4 @@
-# Working through "A Gentle Introduction to `optparse-applicative`"
+# Walkthrough of "A Gentle Introduction to `optparse-applicative`"
 
 - <https://prborges.com/2023/introduction-to-optparse-applicative/>
 
@@ -17,5 +17,6 @@ AppOptions {withAnswers = False, maxDigits = 4, separation = 4, probsInGroup = 5
 $ cabal run exe:agitoa -- anything
 Invalid argument `anything'
 
-Usage: agitoa 
+Usage: agitoa [-a|--with-answers] [-d|--max-digits Int] [-s|--separation Int] 
+              [-g|--group-length Int] [-o|--output-file FILE]
 ```
