@@ -20,7 +20,13 @@ main = arrangerOptions >>= print
 
 arrangerOptions :: IO AppOptions
 arrangerOptions =
-    execParser $ info (helper <*> appOptionsParser) mempty
+    execParser $
+      info (helper <*> appOptionsParser) $
+        progDesc "Arranges arithmetic problems (sums and subtractions) vertically and side by side"
+          <> header "arranger - arithmetic arranger version 0.1.0.0"
+          <> footer
+              "An example app for \
+                    \https://www.prborges.com/2023/introduction-to-optparse-applicative"
 
 appOptionsParser :: Parser AppOptions
 appOptionsParser =
