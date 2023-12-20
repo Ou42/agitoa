@@ -78,4 +78,7 @@ outputParser =
       <> value StdOut
 
 inputFileParser :: Parser FilePath
-inputFileParser = pure "input.txt"
+inputFileParser =
+  strArgument $
+    metavar "FILE"
+      <> help "Input file with one problem per line."
