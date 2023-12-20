@@ -20,7 +20,7 @@ main = arrangerOptions >>= print
 
 arrangerOptions :: IO AppOptions
 arrangerOptions =
-    execParser $ info appOptionsParser mempty
+    execParser $ info (helper <*> appOptionsParser) mempty
 
 appOptionsParser :: Parser AppOptions
 appOptionsParser =

@@ -12,11 +12,23 @@ Resolving dependencies...
 Build profile: -w ghc-9.8.1 -O1
 
 $ cabal run exe:agitoa
-AppOptions {withAnswers = False, maxDigits = 4, separation = 4, probsInGroup = 5, output = StdOut, inputFile = "input.txt"}
-
-$ cabal run exe:agitoa -- anything
-Invalid argument `anything'
+Missing: FILE
 
 Usage: agitoa [-a|--with-answers] [-d|--max-digits Int] [-s|--separation Int] 
-              [-g|--group-length Int] [-o|--output-file FILE]
+              [-g|--group-length Int] [-o|--output-file FILE] FILE
+
+$ cabal run exe:agitoa -- --help
+Usage: agitoa [-a|--with-answers] [-d|--max-digits Int] [-s|--separation Int] 
+              [-g|--group-length Int] [-o|--output-file FILE] FILE
+
+Available options:
+  -h,--help                Show this help text
+  -a,--with-answers        Generate problem answers
+  -d,--max-digits Int      Maximum number of digits allowed in a term.
+  -s,--separation Int      Number of spaces between vertically arranged
+                           problems.
+  -g,--group-length Int    Number of problems in each horizontal group.
+  -o,--output-file FILE    Output file for the arranged problems. If not given,
+                           output is written to standard output.
+  FILE                     Input file with one problem per line.
 ```
