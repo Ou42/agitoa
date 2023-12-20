@@ -51,6 +51,14 @@ appOptionsParser =
         probsInGroupParser :: Parser Int
         probsInGroupParser = pure 5
         outputParser :: Parser AppOutput
-        outputParser = pure StdOut
+        outputParser =
+          option (OutputFile <$> str) $
+            short 'o'
+              <> long "output-file"
+              <> metavar "FILE"
+              <> help
+                  "Output file for the arranged problems. \
+                  \ If not given, output is written to standard output."
+              <> value StdOut
         inputFileParser :: Parser FilePath
         inputFileParser = pure "input.txt"
