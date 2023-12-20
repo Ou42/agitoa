@@ -39,7 +39,13 @@ appOptionsParser =
               <> long "with-answers"
               <> help "Generate problem answers"
         maxDigitsParser :: Parser Int
-        maxDigitsParser = pure 4
+        maxDigitsParser =
+          option auto $
+            short 'd'
+              <> long "max-digits"
+              <> metavar "Int"
+              <> help "Maximum number of digits allowed in a term."
+              <> value 4
         separationParser :: Parser Int
         separationParser = pure 4
         probsInGroupParser :: Parser Int
