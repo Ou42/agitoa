@@ -10,4 +10,12 @@ compiled using version 3.10.2.1 of the Cabal library
 $ cabal build
 Resolving dependencies...
 Build profile: -w ghc-9.8.1 -O1
+
+$ cabal run exe:agitoa
+AppOptions {withAnswers = False, maxDigits = 4, separation = 4, probsInGroup = 5, output = StdOut, inputFile = "input.txt"}
+
+$ cabal run exe:agitoa -- anything
+Invalid argument `anything'
+
+Usage: agitoa 
 ```
