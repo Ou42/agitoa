@@ -33,7 +33,11 @@ appOptionsParser =
         <*> inputFileParser
     where
         withAnswersParser :: Parser Bool
-        withAnswersParser = pure False
+        withAnswersParser =
+          switch $
+            short 'a'
+              <> long "with-answers"
+              <> help "Generate problem answers"
         maxDigitsParser :: Parser Int
         maxDigitsParser = pure 4
         separationParser :: Parser Int
