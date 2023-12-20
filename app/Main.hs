@@ -58,7 +58,13 @@ separationParser =
       <> value 4
 
 probsInGroupParser :: Parser Int
-probsInGroupParser = pure 5
+probsInGroupParser =
+  option auto $
+    short 'g'
+      <> long "group-length"
+      <> metavar "Int"
+      <> help "Number of problems in each horizontal group."
+      <> value 5
 
 outputParser :: Parser AppOutput
 outputParser =
