@@ -17,9 +17,20 @@ Missing: FILE
 Usage: agitoa [-a|--with-answers] [-d|--max-digits Int] [-s|--separation Int] 
               [-g|--group-length Int] [-o|--output-file FILE] FILE
 
-$ cabal run exe:agitoa -- --help
+  Arranges arithmetic problems (sums and subtractions) vertically and side by
+  side
+
+$ cabal run exe:agitoa -- -h
+Warning: The package list for 'hackage.haskell.org' is 15 days old.
+Run 'cabal update' to get the latest list of available packages.
+Resolving dependencies...
+arranger - arithmetic arranger version 0.1.0.0
+
 Usage: agitoa [-a|--with-answers] [-d|--max-digits Int] [-s|--separation Int] 
               [-g|--group-length Int] [-o|--output-file FILE] FILE
+
+  Arranges arithmetic problems (sums and subtractions) vertically and side by
+  side
 
 Available options:
   -h,--help                Show this help text
@@ -31,4 +42,7 @@ Available options:
   -o,--output-file FILE    Output file for the arranged problems. If not given,
                            output is written to standard output.
   FILE                     Input file with one problem per line.
+
+An example app for
+https://www.prborges.com/2023/introduction-to-optparse-applicative
 ```

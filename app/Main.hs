@@ -47,7 +47,7 @@ withAnswersParser =
 
 maxDigitsParser :: Parser Int
 maxDigitsParser =
-  option auto $
+  option (boundedInt 1 15) $
     short 'd'
       <> long "max-digits"
       <> metavar "Int"
@@ -56,7 +56,7 @@ maxDigitsParser =
 
 separationParser :: Parser Int
 separationParser =
-  option auto $
+  option positiveInt $
     short 's'
       <> long "separation"
       <> metavar "Int"
@@ -65,7 +65,7 @@ separationParser =
 
 probsInGroupParser :: Parser Int
 probsInGroupParser =
-  option auto $
+  option positiveInt $
     short 'g'
       <> long "group-length"
       <> metavar "Int"
@@ -88,3 +88,23 @@ inputFileParser =
   strArgument $
     metavar "FILE"
       <> help "Input file with one problem per line."
+
+positiveInt :: ReadM Int
+positiveInt = auto >>= checkPositive
+  where
+    checkPositive i
+      | i > 0 = pure i
+      | otherwise = readerError "Value must be greater than 0"
+
+boundedInt :: Int -> Int -> ReadM Int
+boundedInt lower upper = auto >>= checkBounds
+  where
+    checkBounds i
+      | lower <= i && i <= upper = pure i
+      | otherwise =
+          readerError $
+            mconcat [ "Value must be between "
+                    , show lower
+                    , " and "
+                    , show upper
+                    ]
